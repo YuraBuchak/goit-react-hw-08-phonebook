@@ -28,6 +28,11 @@ export const logoutUser = async () => {
   return data;
 };
 
+export const refreshingUser = async () => {
+  const { data } = axios.get('/users/current');
+  return data;
+};
+
 export const fetchContacts = async () => {
   const { data } = await axios.get('/contacts');
   return data;
