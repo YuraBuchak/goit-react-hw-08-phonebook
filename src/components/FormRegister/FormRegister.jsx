@@ -7,11 +7,6 @@ export const FormRegister = () => {
   const handleSubmitRegister = event => {
     event.preventDefault();
     const form = event.currentTarget;
-    // console.log({
-    //   name: form.elements.name.value,
-    //   email: form.elements.email.value,
-    //   password: form.elements.password.value,
-    // });
 
     dispatch(
       registerThunk({

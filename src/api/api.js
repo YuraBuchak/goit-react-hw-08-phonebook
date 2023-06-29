@@ -16,6 +16,18 @@ export const registerUser = async credentials => {
   return data;
 };
 
+export const loginUser = async credentials => {
+  const { data } = await axios.post('/users/login', credentials);
+  setAuthHeader(data.token);
+  return data;
+};
+
+export const logoutUser = async () => {
+  const { data } = await axios.post('/users/logout');
+  clearAuthHeader();
+  return data;
+};
+
 export const fetchContacts = async () => {
   const { data } = await axios.get('/contacts');
   return data;
