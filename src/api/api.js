@@ -1,6 +1,14 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://649012571e6aa71680ca7dc5.mockapi.io';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+
+export const setAuthHeader = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+export const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = '';
+};
 
 export const fetchContacts = async () => {
   const { data } = await axios.get('/contacts');
