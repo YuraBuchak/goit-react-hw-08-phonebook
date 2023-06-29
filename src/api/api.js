@@ -10,6 +10,12 @@ export const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
+export const registerUser = async credentials => {
+  const { data } = await axios.post('/users/signup', credentials);
+  setAuthHeader(data.token);
+  return data;
+};
+
 export const fetchContacts = async () => {
   const { data } = await axios.get('/contacts');
   return data;

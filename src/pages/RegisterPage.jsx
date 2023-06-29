@@ -1,3 +1,10 @@
+import { FormRegister } from 'components/FormRegister/FormRegister';
+
 export const RegisterPage = () => {
-  return <div>RegisterPage</div>;
+  return (
+    <div>
+      <h2>RegisterPage</h2>
+      <FormRegister />
+    </div>
+  );
 };
