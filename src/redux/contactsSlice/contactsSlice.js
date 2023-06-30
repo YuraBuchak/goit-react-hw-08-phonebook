@@ -1,3 +1,4 @@
+import { logOutThunk } from 'redux/thunk/authThunk';
 import { getContactsThunk } from 'redux/thunk/contactThunk';
 
 const { createSlice } = require('@reduxjs/toolkit');
@@ -29,12 +30,19 @@ export const handleRejected = (state, { payload }) => {
   state.isLoading = false;
 };
 
+export const handleFulfilledLogout = state => {
+  state.items = [];
+  state.error = '';
+  state.isLoading = false;
+};
+
 export const contactsSlice = createSlice({
   name: 'contacts',
   initialState: contactsInitialState,
   extraReducers: builder => {
     builder
       .addCase(getContactsThunk.fulfilled, handleFulfilledContacts)
+      .addCase(logOutThunk.fulfilled, handleFulfilledLogout)
       .addMatcher(action => action.type.endsWith('/pending'), handlePending)
       .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },

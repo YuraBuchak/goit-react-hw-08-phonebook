@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUser } from 'redux/selectors';
+import { selectName } from 'redux/selectors';
 import { logOutThunk } from 'redux/thunk/authThunk';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+  // const name = useSelector(selectName);
+
   return (
     <div>
-      <div> Welcome, {user.name} </div>
+      <div> Welcome, </div>
       <button type="button" onClick={() => dispatch(logOutThunk())}>
         LogOut
       </button>

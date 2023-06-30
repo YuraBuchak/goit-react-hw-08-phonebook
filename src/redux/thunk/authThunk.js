@@ -1,5 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { loginUser, logoutUser, registerUser, setAuthHeader } from 'api/api';
+import {
+  loginUser,
+  logoutUser,
+  refreshingUser,
+  registerUser,
+  setAuthHeader,
+} from 'api/api';
 
 export const registerThunk = createAsyncThunk(
   'auth/register',
@@ -42,10 +48,9 @@ export const refreshingThunk = createAsyncThunk(
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
-
+    setAuthHeader(persistedToken);
     try {
-      setAuthHeader(persistedToken);
-      return await logoutUser();
+      return await refreshingUser();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

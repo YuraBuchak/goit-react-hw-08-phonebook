@@ -1,8 +1,11 @@
+import { Notify } from 'notiflix';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { logInThunk } from 'redux/thunk/authThunk';
 
 export const FormLogin = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmitLogin = event => {
     event.preventDefault();
@@ -12,7 +15,12 @@ export const FormLogin = () => {
         email: form.elements.email.value,
         password: form.elements.password.value,
       })
-    );
+    )
+      .unwrap()
+      .then(() => {
+        navigate('/');
+        Notify.success(`Welcome`);
+      });
   };
 
   return (
