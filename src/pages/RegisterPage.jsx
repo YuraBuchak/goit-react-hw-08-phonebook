@@ -1,6 +1,6 @@
 import { FormRegister } from 'components/FormRegister/FormRegister';
 
-export const RegisterPage = () => {
+const RegisterPage = () => {
   return (
     <div>
       <h2>RegisterPage</h2>
@@ -8,3 +8,5 @@ export const RegisterPage = () => {
     </div>
   );
 };
+
+export default RegisterPage;

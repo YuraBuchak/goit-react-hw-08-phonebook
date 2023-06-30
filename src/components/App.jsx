@@ -1,14 +1,19 @@
 import { Route, Routes } from 'react-router-dom';
 
 import { Layout } from './Layout';
-import { HomePage } from 'pages/HomePage';
-import { RegisterPage } from 'pages/RegisterPage';
-import { LoginPage } from 'pages/LoginPage';
-import { ContactsPage } from 'pages/ContactsPage';
+// import { HomePage } from 'pages/HomePage';
+// import { RegisterPage } from 'pages/RegisterPage';
+// import { LoginPage } from 'pages/LoginPage';
+// import { ContactsPage } from 'pages/ContactsPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from 'redux/selectors';
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { refreshingThunk } from 'redux/thunk/authThunk';
+
+const ContactsPage = lazy(() => import('../pages/ContactsPage'));
+const LoginPage = lazy(() => import('../pages/LoginPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage'));
+const HomePage = lazy(() => import('../pages/HomePage'));
 
 export const App = () => {
   const dispatch = useDispatch();
