@@ -1,4 +1,4 @@
-.container {
+/* .container {
   width: 400px;
   margin-left: auto;
   margin-right: auto;
@@ -10,7 +10,7 @@
   border-radius: 20px;
   background-color: antiquewhite;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
+} */
 
 .title {
   font-size: 60px;
@@ -198,7 +198,16 @@
 }
 
 .avatarWrapper {
-  border: #8a2be2 3px solid;
+  /* border: #8a2be2 3px solid; */
   border-radius: 50%;
-  background-color: #8a2be2;
+  /* background-color: #8a2be2; */
+}
+
+.container {
+  padding: 30px 10px 10px 10px;
+  margin: 0 auto;
+  max-width: 900px;
+  font-size: 40px;
+  color: #010101;
+  outline: red 1px solid;
 }

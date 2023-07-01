@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
 import { addContactThunk, getContactsThunk } from 'redux/thunk/contactThunk';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import TextField from '@mui/material/TextField';
+import { Button } from '@mui/material';
 
 export const AddContactForm = () => {
   const contacts = useSelector(selectContacts);
@@ -34,32 +36,31 @@ export const AddContactForm = () => {
       onSubmit={handleSubmitForm}
       className={css.addForm}
     >
-      <label className={css.addContactLabel}>
-        Name
-        <input
-          className={css.addContactInput}
-          type="text"
-          name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          required
-        />
-      </label>
+      <TextField
+        required
+        label="Name"
+        type="text"
+        variant="outlined"
+        name="name"
+        size="small"
+        pattern="^[a-zA-Za-яА-Я]+(([' -][a-zA-Za-яА-Я ])?[a-zA-Za-яА-Я]*)*$"
+        title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+      />
 
-      <label className={css.addContactLabel}>
-        Number
-        <input
-          className={css.addContactInput}
-          type="tel"
-          name="number"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-          required
-        />
-      </label>
-      <button className={css.addBtn} type="submit">
+      <TextField
+        required
+        label="Number"
+        type="tel"
+        variant="outlined"
+        name="number"
+        size="small"
+        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+      />
+
+      <Button type="submit" variant="contained" sx={{ width: '300px' }}>
         Add contact
-      </button>
+      </Button>
     </form>
   );
 };

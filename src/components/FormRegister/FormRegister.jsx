@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { registerThunk } from 'redux/thunk/authThunk';
 
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
 export const FormRegister = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,19 +34,33 @@ export const FormRegister = () => {
   };
   return (
     <form onSubmit={handleSubmitRegister} autoComplete="on">
-      <label>
-        Username
-        <input type="text" name="name" />
-      </label>
-      <label>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Register</button>
+      <TextField
+        required
+        label="Name"
+        type="text"
+        variant="outlined"
+        name="name"
+        size="small"
+      />
+      <TextField
+        required
+        label="Email"
+        type="email"
+        variant="outlined"
+        name="email"
+        size="small"
+      />
+      <TextField
+        required
+        label="Password"
+        type="password"
+        variant="outlined"
+        name="password"
+        size="small"
+      />
+      <Button type="submit" variant="contained">
+        Sign Up
+      </Button>
     </form>
   );
 };

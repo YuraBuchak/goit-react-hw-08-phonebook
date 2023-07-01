@@ -1,3 +1,4 @@
+import { Button, Chip } from '@mui/material';
 import { Confirm, Notify } from 'notiflix';
 import { useDispatch } from 'react-redux';
 // import { selectName } from 'redux/selectors';
@@ -26,10 +27,10 @@ export const UserMenu = () => {
 
   return (
     <div>
-      <div> Welcome, </div>
-      <button type="button" onClick={logOut}>
-        LogOut
-      </button>
+      <Chip sx={{ color: 'white' }} label="Welcome, user" />
+      <Button type="button" onClick={logOut} color="inherit">
+        Log Out
+      </Button>
     </div>
   );
 };

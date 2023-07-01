@@ -1,3 +1,4 @@
+import { TextField } from '@mui/material';
 import css from '../Phonebook.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from 'redux/filterSlice/filterSlice';
@@ -12,16 +13,18 @@ export const Filter = () => {
   };
 
   return (
-    <label className={css.labelFilter}>
-      <span className={css.labelSerch}>Serch contact</span>
-      <input
-        className={css.filterInput}
-        type="text"
-        name="filter"
-        placeholder="Search contact"
-        value={filter}
-        onChange={handleFilter}
-      />
-    </label>
+    <TextField
+      value={filter}
+      name="filter"
+      onChange={handleFilter}
+      variant="outlined"
+      label="Search contact"
+      type="text"
+      placeholder="Find contact by name"
+      fullWidth
+      sx={{
+        marginBottom: '20px',
+      }}
+    />
   );
 };

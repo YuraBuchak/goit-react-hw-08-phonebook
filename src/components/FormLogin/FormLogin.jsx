@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logInThunk } from 'redux/thunk/authThunk';
 
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+
 export const FormLogin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -29,15 +32,25 @@ export const FormLogin = () => {
 
   return (
     <form onSubmit={handleSubmitLogin} autoComplete="on">
-      <label>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button type="submit">Log In</button>
+      <TextField
+        required
+        label="Email"
+        type="email"
+        variant="outlined"
+        name="email"
+        size="small"
+      />
+      <TextField
+        required
+        label="Password"
+        type="password"
+        variant="outlined"
+        name="password"
+        size="small"
+      />
+      <Button type="submit" variant="contained">
+        Log In
+      </Button>
     </form>
   );
 };

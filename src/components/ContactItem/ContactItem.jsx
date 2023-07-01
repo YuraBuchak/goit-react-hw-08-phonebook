@@ -3,10 +3,12 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import css from '../Phonebook.module.css';
 import { useDispatch } from 'react-redux';
 import { deleteContactThunk, getContactsThunk } from 'redux/thunk/contactThunk';
+import userPhoto from '../../pictures/user.png';
+import { Button } from '@mui/material';
 
 export const ContactItem = ({ contact }) => {
   const dispatch = useDispatch();
-  const { name, number, id, photo } = contact;
+  const { name, number, id } = contact;
 
   const deleteUpdateContacts = async () => {
     Confirm.show(
@@ -29,20 +31,21 @@ export const ContactItem = ({ contact }) => {
   return (
     <li className={css.listItem}>
       <div className={css.avatarWrapper}>
-        <img src={photo} alt="avatar" className={css.avatar} />
+        <img src={userPhoto} alt="avatar" className={css.avatar} />
       </div>
 
       <div className={css.contactWrapper}>
         <span className={css.contactName}>{name}:</span>
         <span className={css.number}>{number}</span>
       </div>
-
-      <button
-        className={css.deleteBtn}
+      <Button
+        color="error"
+        variant="outlined"
+        sx={{ width: '40px' }}
         onClick={() => dispatch(deleteUpdateContacts)}
       >
-        X
-      </button>
+        Delete
+      </Button>
     </li>
   );
 };
