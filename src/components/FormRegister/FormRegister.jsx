@@ -1,8 +1,11 @@
+import { Notify } from 'notiflix';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { registerThunk } from 'redux/thunk/authThunk';
 
 export const FormRegister = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmitRegister = event => {
     event.preventDefault();
@@ -14,7 +17,12 @@ export const FormRegister = () => {
         email: form.elements.email.value,
         password: form.elements.password.value,
       })
-    );
+    )
+      .unwrap()
+      .then(() => {
+        navigate('/');
+        Notify.success(`Registration is successful. Welcome!`);
+      });
     form.reset();
   };
   return (

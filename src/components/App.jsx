@@ -3,8 +3,9 @@ import { Layout } from './Layout';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing, selectToken } from 'redux/selectors';
 import { lazy, useEffect } from 'react';
-import { refreshingThunk } from 'redux/thunk/authThunk';
+import { logOutThunk, refreshingThunk } from 'redux/thunk/authThunk';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
+import { PublicRoute } from './PublicRoute/PublicRoute';
 
 const ContactsPage = lazy(() => import('../pages/ContactsPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
@@ -18,7 +19,9 @@ export const App = () => {
 
   useEffect(() => {
     if (isToken) {
-      dispatch(refreshingThunk());
+      dispatch(refreshingThunk())
+        .unwrap()
+        .catch(() => dispatch(logOutThunk()));
     }
   }, [dispatch, isToken]);
 
@@ -27,8 +30,22 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/register"
+            element={
+              <PublicRoute>
+                <RegisterPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
           <Route
             path="/contacts"
             element={
@@ -38,6 +55,7 @@ export const App = () => {
             }
           />
         </Route>
+        <Route path="*" element={<HomePage />} />
       </Routes>
     )
   );
