@@ -20,6 +20,10 @@ export const FormLogin = () => {
       .then(() => {
         navigate('/');
         Notify.success(`Welcome`);
+      })
+      .catch(error => {
+        Notify.failure(`Invalid email or password. Please, try again!`);
+        form.reset();
       });
   };
 

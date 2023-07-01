@@ -22,6 +22,10 @@ export const FormRegister = () => {
       .then(() => {
         navigate('/');
         Notify.success(`Registration is successful. Welcome!`);
+      })
+      .catch(error => {
+        Notify.failure(`Ooops, Registration is not successful. Try again!`);
+        form.reset();
       });
     form.reset();
   };
