@@ -211,3 +211,9 @@
   color: #010101;
   outline: red 1px solid;
 }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

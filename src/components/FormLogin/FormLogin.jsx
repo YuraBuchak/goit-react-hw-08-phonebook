@@ -2,7 +2,7 @@ import { Notify } from 'notiflix';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logInThunk } from 'redux/thunk/authThunk';
-
+import css from '../../components/Phonebook.module.css';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
@@ -31,7 +31,7 @@ export const FormLogin = () => {
   };
 
   return (
-    <form onSubmit={handleSubmitLogin} autoComplete="on">
+    <form onSubmit={handleSubmitLogin} autoComplete="on" className={css.form}>
       <TextField
         required
         label="Email"
@@ -48,7 +48,11 @@ export const FormLogin = () => {
         name="password"
         size="small"
       />
-      <Button type="submit" variant="contained">
+      <Button
+        type="submit"
+        variant="contained"
+        sx={{ width: '100px', margin: 'auto' }}
+      >
         Log In
       </Button>
     </form>
