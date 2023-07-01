@@ -1,5 +1,6 @@
 import { Typography } from '@mui/material';
 import phone from '../pictures/telephone.png';
+import css from '../components/Phonebook.module.css';
 
 const HomePage = () => {
   return (
@@ -12,7 +13,9 @@ const HomePage = () => {
       >
         Welcome to our Phone Book
       </Typography>
-      <img width="265px" src={phone} alt="call" />
+      <div className={css.homeImg}>
+        <img width="265px" src={phone} alt="call" />
+      </div>
     </>
   );
 };

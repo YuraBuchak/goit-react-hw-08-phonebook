@@ -209,11 +209,16 @@
   max-width: 900px;
   font-size: 40px;
   color: #010101;
-  outline: red 1px solid;
 }
 
 .form {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.homeImg {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
