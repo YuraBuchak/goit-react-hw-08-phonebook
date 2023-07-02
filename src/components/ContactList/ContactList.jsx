@@ -26,17 +26,13 @@ export const ContactList = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <Grid
-        container
-        spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
-      >
+      <Grid container spacing={2}>
         {filteredContacts.length ? (
-          <ul className={css.listContacts}>
-            {filteredContacts.map(contact => (
-              <ContactItem key={contact.id} contact={contact} />
-            ))}
-          </ul>
+          filteredContacts.map(contact => (
+            <Grid item xs={6} sm={6} md={6} key={contact.id}>
+              <ContactItem contact={contact} />
+            </Grid>
+          ))
         ) : (
           <p className={css.labelFilter}>No contacts!</p>
         )}

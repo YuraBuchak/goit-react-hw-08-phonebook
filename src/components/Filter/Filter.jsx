@@ -1,5 +1,4 @@
 import { TextField } from '@mui/material';
-import css from '../Phonebook.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from 'redux/filterSlice/filterSlice';
 import { selectFilter } from 'redux/selectors';
@@ -23,7 +22,7 @@ export const Filter = () => {
       placeholder="Find contact by name"
       fullWidth
       sx={{
-        marginBottom: '20px',
+        marginBottom: '60px',
       }}
     />
   );
