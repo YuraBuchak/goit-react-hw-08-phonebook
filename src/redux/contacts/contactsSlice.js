@@ -1,5 +1,11 @@
 import { logOutThunk } from 'redux/thunk/authThunk';
 import { getContactsThunk } from 'redux/thunk/contactThunk';
+import {
+  handleFulfilledContacts,
+  handleFulfilledLogout,
+  handlePending,
+  handleRejected,
+} from './operations';
 
 const { createSlice } = require('@reduxjs/toolkit');
 
@@ -12,28 +18,6 @@ export const contactsInitialState = {
   ],
   isLoading: false,
   error: null,
-};
-
-export const handlePending = state => {
-  state.isLoading = true;
-  state.error = '';
-};
-
-export const handleFulfilledContacts = (state, { payload }) => {
-  state.items = payload;
-  state.error = '';
-  state.isLoading = false;
-};
-
-export const handleRejected = (state, { payload }) => {
-  state.error = payload;
-  state.isLoading = false;
-};
-
-export const handleFulfilledLogout = state => {
-  state.items = [];
-  state.error = '';
-  state.isLoading = false;
 };
 
 export const contactsSlice = createSlice({

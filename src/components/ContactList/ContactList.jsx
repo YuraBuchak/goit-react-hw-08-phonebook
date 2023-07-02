@@ -1,10 +1,9 @@
 import { selectContacts, selectFilter } from 'redux/selectors';
 import { ContactItem } from '../ContactItem/ContactItem';
-import css from '../Phonebook.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContactsThunk } from 'redux/thunk/contactThunk';
 import { useEffect } from 'react';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
@@ -34,7 +33,14 @@ export const ContactList = () => {
             </Grid>
           ))
         ) : (
-          <p className={css.labelFilter}>No contacts!</p>
+          <Typography
+            variant="h5"
+            align="center"
+            component="div"
+            sx={{ flexGrow: 1, color: '#4a4849' }}
+          >
+            No contacts...
+          </Typography>
         )}
       </Grid>
     </Box>

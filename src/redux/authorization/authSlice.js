@@ -4,6 +4,14 @@ import {
   refreshingThunk,
   registerThunk,
 } from 'redux/thunk/authThunk';
+import {
+  handleFulfilledLogin,
+  handleFulfilledLogout,
+  handleFulfilledRefreshing,
+  handleFulfilledRegistration,
+  handlePendingRefreshing,
+  handleRejectedRefreshing,
+} from './operations';
 
 const { createSlice } = require('@reduxjs/toolkit');
 
@@ -12,38 +20,6 @@ export const initialState = {
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
-};
-
-export const handleFulfilledRegistration = (state, { payload }) => {
-  state.user = payload.user;
-  state.token = payload.token;
-  state.isLoggedIn = true;
-};
-
-export const handleFulfilledLogin = (state, { payload }) => {
-  state.user = payload.user;
-  state.token = payload.token;
-  state.isLoggedIn = true;
-};
-
-export const handleFulfilledLogout = state => {
-  state.user = { name: null, email: null };
-  state.token = null;
-  state.isLoggedIn = false;
-};
-
-export const handleFulfilledRefreshing = (state, { payload }) => {
-  state.user = payload;
-  state.isLoggedIn = true;
-  state.isRefreshing = false;
-};
-
-export const handlePendingRefreshing = state => {
-  state.isRefreshing = true;
-};
-
-export const handleRejectedRefreshing = state => {
-  state.isRefreshing = false;
 };
 
 export const authSlice = createSlice({
@@ -57,10 +33,6 @@ export const authSlice = createSlice({
       .addCase(refreshingThunk.pending, handlePendingRefreshing)
       .addCase(refreshingThunk.fulfilled, handleFulfilledRefreshing)
       .addCase(refreshingThunk.rejected, handleRejectedRefreshing),
-  // .addMatcher(
-  //   action => action.type.endsWith('/rejected'),
-  //   (state, action) => state
-  // ),
 });
 
 export const authReducer = authSlice.reducer;
