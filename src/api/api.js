@@ -29,7 +29,7 @@ export const logoutUser = async () => {
 };
 
 export const refreshingUser = async () => {
-  const { data } = axios.get('/users/current');
+  const { data } = await axios.get('/users/current');
   return data;
 };
 
